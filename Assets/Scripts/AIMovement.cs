@@ -51,9 +51,9 @@ public class AIMovement : MonoBehaviour
 
     Vector3 wanderTarget;
 
-    SteeringBase steeringBase;
+    public SteeringBase steeringBase;
 
-    MovementAIRigidbody rb;
+    public MovementAIRigidbody rb;
 
     void Awake()
     {
@@ -79,17 +79,17 @@ public class AIMovement : MonoBehaviour
             if (movementState == MovementState.Wander) {
                 accel = Wander();
 
-            } else if (movementState == MovementState.Pursue) {
+            } else if (movementState == MovementState.Pursue && pursueTarget != null) {
                 accel = Pursue(pursueTarget);
 
-            } else if (movementState == MovementState.Seek) {
+            } else if (movementState == MovementState.Seek && seekTarget != null) {
                 accel = steeringBase.Seek(seekTarget.position);
 
-            } else if (movementState == MovementState.Flee) {
+            } else if (movementState == MovementState.Flee && fleeTarget != null) {
                 accel = Flee(fleeTarget.position);
 
-            } else if (movementState == MovementState.Arrive) {
-
+            } else {
+                accel = Wander();
             }
         }
 
