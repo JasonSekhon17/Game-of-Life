@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enduranceMultiplier: 0.25
   healthMultiplier: 0.5
-  hungerMultiplier: 0.75
+  hungerMultiplier: 0.4
   thirstMultiplier: 0.5
   endurance: 0
   baseHealth: 0
@@ -219,20 +219,20 @@ MonoBehaviour:
   currentHunger: 0
   currentThirst: 0
   age: 0
-  reproductionAge: 5
+  reproductionAge: 10
   reproductionTimer: 0
   nutritionalValue: 80
   canReproduce: 0
   reproductionPrefab: {fileID: 6834168867460669432}
   activityState: 0
+  movement: {fileID: 0}
   moveSpeedMultiplier: 0.5
   staminaMultiplier: 0.25
   strengthMultiplier: 1
-  aggressionMultiplier: 1
+  aggressionMultiplier: 0.75
   baseMoveSpeed: 0
   currentMoveSpeed: 0
   sprintModifier: 0
-  movement: {fileID: 0}
   baseStamina: 0
   currentStamina: 0
   strength: 0

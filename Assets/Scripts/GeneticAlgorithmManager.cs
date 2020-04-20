@@ -97,7 +97,7 @@ public class GeneticAlgorithmManager : MonoBehaviour
         List<HumanDNA> humanDNAs = new List<HumanDNA>(matingPool);
         humanDNAs.Sort((a, b) => a.endAge.CompareTo(b.endAge));
 
-        if (humanDNAs[humanDNAs.Count - 1].endAge >= idealHuman.age)
+        if (humanDNAs[humanDNAs.Count - 1].endAge >= idealHuman.age - 5)
             idealHuman.SetAttributes(humanDNAs[humanDNAs.Count - 1]);
         
         matingPool.Clear();

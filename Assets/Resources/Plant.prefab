@@ -175,7 +175,7 @@ MonoBehaviour:
   currentHunger: 0
   currentThirst: 0
   age: 0
-  reproductionAge: 2
+  reproductionAge: 3
   reproductionTimer: 0
   nutritionalValue: 20
   canReproduce: 0

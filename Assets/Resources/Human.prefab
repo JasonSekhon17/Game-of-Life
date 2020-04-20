@@ -307,10 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabd91333ae326549bf113a9dbf65542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enduranceMultiplier: 0.5
-  healthMultiplier: 0.5
-  hungerMultiplier: 0.5
-  thirstMultiplier: 0.5
+  enduranceMultiplier: 0.4267721
+  healthMultiplier: 0.66660094
+  hungerMultiplier: 0.3916576
+  thirstMultiplier: 0.4409722
   endurance: 0
   baseHealth: 0
   baseHunger: 0
@@ -319,20 +319,20 @@ MonoBehaviour:
   currentHunger: 0
   currentThirst: 0
   age: 0
-  reproductionAge: 8
+  reproductionAge: 12
   reproductionTimer: 0
   nutritionalValue: 80
   canReproduce: 0
   reproductionPrefab: {fileID: 5962005898253758586}
   activityState: 0
-  moveSpeedMultiplier: 0.5
-  staminaMultiplier: 0.5
-  strengthMultiplier: 0.5
-  aggressionMultiplier: 0.5
+  movement: {fileID: 0}
+  moveSpeedMultiplier: 0.24867004
+  staminaMultiplier: 0.44640243
+  strengthMultiplier: 0.94070786
+  aggressionMultiplier: 0.43821695
   baseMoveSpeed: 0
   currentMoveSpeed: 0
   sprintModifier: 0
-  movement: {fileID: 0}
   baseStamina: 0
   currentStamina: 0
   strength: 0

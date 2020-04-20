@@ -1004,15 +1004,17 @@ namespace Tests
             GameObject temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Human"), new Vector3(0, 0, 0), Quaternion.identity);
             Human human = temp.GetComponent<Human>();
         
-            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(5, 0, 0), Quaternion.identity);
+            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(4, 0, 0), Quaternion.identity);
             Herbivore herbivore = temp.GetComponent<Herbivore>();
+            herbivore.baseMoveSpeed = 1;
+            human.baseMoveSpeed = 1f;
             Vector3 initialHumanPos = human.transform.position;
             Vector3 initialHerbivorePos = herbivore.transform.position;
 
             yield return new WaitForSecondsRealtime(.01f);
             human.currentHunger = human.baseHunger / 3;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
             Assert.AreEqual("Hunger", human.currentPriority);
             Assert.AreNotSame(initialHumanPos, human.transform.position);
             Assert.Greater(Vector3.Distance(initialHerbivorePos, initialHumanPos), Vector3.Distance(initialHerbivorePos, human.transform.position));
@@ -1138,7 +1140,7 @@ namespace Tests
             yield return new WaitForSecondsRealtime(.01f);
             omnivore.currentHunger = omnivore.baseHunger / 3;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             Assert.AreEqual("Hunger", omnivore.currentPriority);
             Assert.AreNotSame(initialOmnivorePos, omnivore.transform.position);
             Assert.Greater(Vector3.Distance(initialCarnivorePos, initialOmnivorePos), Vector3.Distance(initialCarnivorePos, omnivore.transform.position));
@@ -1323,7 +1325,7 @@ namespace Tests
             yield return new WaitForSecondsRealtime(.1f);
             Assert.AreEqual("Thirst", human.currentPriority);
             Assert.Greater(initialThirst, human.currentThirst);
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(1.5f);
             Assert.Greater(Vector3.Distance(initialHumanPos, waterPos), Vector3.Distance(human.transform.position, waterPos));
             Assert.Less(initialThirst, human.currentThirst);
             
@@ -1545,7 +1547,7 @@ namespace Tests
             GameObject temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Human"), new Vector3(0, 0, 0), Quaternion.identity);
             Human human = temp.GetComponent<Human>();
 
-            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(5, 0, 0), Quaternion.identity);
+            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(4, 0, 0), Quaternion.identity);
             Herbivore herbivore = temp.GetComponent<Herbivore>();
 
             yield return new WaitForSecondsRealtime(.01f);
@@ -1568,7 +1570,7 @@ namespace Tests
             initialHerbivorePos = herbivore.transform.position;
             yield return new WaitForSecondsRealtime(1f);
             Assert.True(human.canInteract);
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(1.5f);
             Assert.False(human.canInteract);
             Assert.Greater(Vector3.Distance(initialHerbivorePos, initialHumanPos), Vector3.Distance(initialHerbivorePos, human.transform.position));
             Assert.Less(initialHunger, human.currentHunger);
@@ -1587,7 +1589,7 @@ namespace Tests
             yield return new WaitForSecondsRealtime(.01f);
             Assert.AreEqual("Hunger", human.currentPriority);
             Assert.Greater(initialHunger, human.currentHunger);
-            yield return new WaitForSecondsRealtime(1.5f);
+            yield return new WaitForSecondsRealtime(2f);
             Assert.False(human.canInteract);
             Assert.Greater(Vector3.Distance(initialPlantPos, initialHumanPos), Vector3.Distance(initialPlantPos, human.transform.position));
             Assert.Less(initialHunger, human.currentHunger);
@@ -1635,7 +1637,7 @@ namespace Tests
             GameObject temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Omnivore"), new Vector3(0, 0, 0), Quaternion.identity);
             Omnivore omnivore = temp.GetComponent<Omnivore>();
 
-            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(5, 0, 0), Quaternion.identity);
+            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(4, 0, 0), Quaternion.identity);
             Herbivore herbivore = temp.GetComponent<Herbivore>();
 
             yield return new WaitForSecondsRealtime(.01f);
@@ -1660,6 +1662,8 @@ namespace Tests
             Assert.True(omnivore.canInteract);
             yield return new WaitForSecondsRealtime(1f);
             Assert.False(omnivore.canInteract);
+            yield return new WaitForSecondsRealtime(1.25f);
+            Assert.False(omnivore.canInteract);
             Assert.Greater(Vector3.Distance(initialHerbivorePos, initialOmnivorePos), Vector3.Distance(initialHerbivorePos, omnivore.transform.position));
             Assert.Less(initialHunger, omnivore.currentHunger);
             Assert.Greater(omnivore.baseHunger, omnivore.currentHunger);
@@ -1677,8 +1681,7 @@ namespace Tests
             yield return new WaitForSecondsRealtime(.01f);
             Assert.AreEqual("Hunger", omnivore.currentPriority);
             Assert.Greater(initialHunger, omnivore.currentHunger);
-            yield return new WaitForSecondsRealtime(1.5f);
-            Assert.False(omnivore.canInteract);
+            yield return new WaitForSecondsRealtime(2f);
             Assert.Greater(Vector3.Distance(initialPlantPos, initialOmnivorePos), Vector3.Distance(initialPlantPos, omnivore.transform.position));
             Assert.Less(initialHunger, omnivore.currentHunger);
             Assert.Greater(omnivore.baseHunger, omnivore.currentHunger);
@@ -1725,7 +1728,7 @@ namespace Tests
             GameObject temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Carnivore"), new Vector3(0, 0, 0), Quaternion.identity);
             Carnivore carnviore = temp.GetComponent<Carnivore>();
 
-            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(5, 0, 0), Quaternion.identity);
+            temp = MonoBehaviour.Instantiate((GameObject)Resources.Load("Herbivore"), new Vector3(4, 0, 0), Quaternion.identity);
             Herbivore herbivore = temp.GetComponent<Herbivore>();
 
             yield return new WaitForSecondsRealtime(.01f);
@@ -1740,9 +1743,11 @@ namespace Tests
             yield return new WaitForSecondsRealtime(.01f);
             Assert.AreEqual("Hunger", carnviore.currentPriority);
             Assert.Greater(initialHunger, carnviore.currentHunger);
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(1.25f);
             Assert.Greater(herbivore.baseHealth, herbivore.currentHealth);
             Assert.Greater(Vector3.Distance(initialHerbivorePos, initialOmnivorePos), Vector3.Distance(initialHerbivorePos, carnviore.transform.position));
+            Assert.False(carnviore.canInteract);
+            yield return new WaitForSecondsRealtime(1f);
             Assert.False(carnviore.canInteract);
             yield return new WaitForSecondsRealtime(1f);
             Assert.True(carnviore.canInteract);
@@ -2093,7 +2098,7 @@ namespace Tests
             Button autoButton = canvas.transform.Find("AutoBtn").GetComponent<Button>();
             autoButton.onClick.Invoke();
             yield return new WaitForSeconds(21 * 5);
-            Assert.AreEqual("Simulation OVer", SceneManager.GetActiveScene().name);
+            Assert.AreEqual("Simulation Over", SceneManager.GetActiveScene().name);
 
             yield return null;
         }

@@ -241,12 +241,13 @@ MonoBehaviour:
   currentHunger: 0
   currentThirst: 0
   age: 0
-  reproductionAge: 6
+  reproductionAge: 12
   reproductionTimer: 0
   nutritionalValue: 80
   canReproduce: 0
   reproductionPrefab: {fileID: 1262733976958573405}
   activityState: 0
+  movement: {fileID: 0}
   moveSpeedMultiplier: 0.5
   staminaMultiplier: 0.5
   strengthMultiplier: 0.5
@@ -254,7 +255,6 @@ MonoBehaviour:
   baseMoveSpeed: 0
   currentMoveSpeed: 0
   sprintModifier: 0
-  movement: {fileID: 0}
   baseStamina: 0
   currentStamina: 0
   strength: 0
